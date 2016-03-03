@@ -1,3 +1,9 @@
+//
+// Name: David Lam
+// Class: CSCI 2312
+// Cluster.h
+//
+
 #ifndef CLUSTERING_CLUSTER_H
 #define CLUSTERING_CLUSTER_H
 
@@ -6,10 +12,12 @@
 namespace Clustering {
 
     typedef struct LNode *LNodePtr;
+    typedef Point *PointPtr;
+    
 
     struct LNode {
 
-        Point point;
+        Point point = Point(int());
         LNodePtr next;
         LNode(const Point &p, LNodePtr n);
 
@@ -20,9 +28,9 @@ namespace Clustering {
         int __size;
         LNodePtr __points;
 
-        void __del();
-        void __cpy(LNodePtr pts);
-        bool __in(const Point &p) const;
+        //  void __del();
+        // void __cpy(LNodePtr pts);
+        // bool __in(const Point &p) const;
 
 
     public:
@@ -40,6 +48,7 @@ namespace Clustering {
         void add(const Point &); // TODO add asc order to the requirements
         const Point &remove(const Point &);
         bool contains(const Point &);
+        void sort ();
 
         // Overloaded operators
 
