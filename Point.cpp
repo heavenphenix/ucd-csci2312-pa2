@@ -124,30 +124,31 @@ const Point operator+(const Point &lhs, const Point &rhs) {
     return p;
 }
 
-const Point operator-(const Point &lhs, const Point &rhs) {
-    Point p(lhs.__dim);
-    p+=lhs;
-    p -= rhs;
-    return p;
-}
+  const Point operator-(const Point &lhs, const Point &rhs)
+    {
+        Point p(lhs);
+        return p -= rhs;
+    }
 
-bool operator==(const Point &lhs, const Point &rhs) {
-    if (lhs.__id != rhs.__id) {
-        return false;
-    }
-    if (lhs.__dim != rhs.__dim) {
-        return false;
-    }
-    for (int i = 0; i < lhs.__dim; i++) {
-        if (lhs.__values[i] != rhs.__values[i]) {
-            return false;
+
+bool operator==(const Point &lhs, const Point &rhs)
+    {
+        bool equal = true;
+        if(lhs.__id !=rhs.__id)
+            equal=false;
+        else
+        {
+            for(int i =0; i < lhs.__dim; i++)
+                if(lhs.__values[i] != rhs.__values[i])
+                    equal=false;
         }
+        return equal;
     }
 
-    return true;
-}
-
-
+    bool operator!=(const Point &lhs, const Point &rhs)
+    {
+        return !operator==(lhs, rhs);
+    }
 bool operator!=(const Point &lhs, const Point &rhs) {
     return !(lhs == rhs);
 }
